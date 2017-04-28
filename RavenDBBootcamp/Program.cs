@@ -15,6 +15,7 @@ namespace RavenDBBootcamp
 	{
 		static void Main(string[] args)
 		{
+		    Console.Title = "RavenDB Bootcamp";
 			Console.WriteLine("Starting.");
 
 			//Unit1Lesson2.Run();
