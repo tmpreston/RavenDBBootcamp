@@ -1,8 +1,8 @@
-﻿namespace RavenDBBootcamp
-{
-	using System;
-	using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+namespace RavenDBBootcamp
+{
 	public class Company
 	{
 		public string Id { get; set; }
