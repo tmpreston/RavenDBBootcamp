@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using static System.Console;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,7 +31,8 @@ namespace RavenDBBootcamp
             //Unit1Lesson5.Run();
             //Unit1Lesson6.Run();
             //Unit2Lesson1.Run();
-		    new Unit2Lesson2().ExecuteAsync(Utility.DocumentStoreHolder.Store);
+		    new Unit2Lesson2().Execute(Utility.DocumentStoreHolder.Store);
+            Unit2Lesson2.Run();
 
             Console.WriteLine("Total time: {0:0.00}s", sw.ElapsedMilliseconds/1000);
             Console.WriteLine("Enter to continue.");
@@ -62,13 +64,35 @@ namespace RavenDBBootcamp
 					{
 						var propValue = property.GetValue(subobject, null);
 						sbReturn.AppendFormat("{2}| {0} - '{1}'\r\n", property.Name, propValue, tabIndent);
-						GetSubObjectPropertiesString(propValue, sbReturn, tabIndent + "\t");
+                        var propType = propValue.GetType();
+                        if (propValue is IEnumerable && propType != typeof(string))
+                        {
+                            var listType = propType.GetTypeInfo().GetGenericArguments()[0];
+                            var t = typeof(Utility);
+                            var m = t.GetMethod("GetSubObjectPropertiesStringForList", BindingFlags.Static | BindingFlags.NonPublic);
+					        var g = m.MakeGenericMethod(listType);
+                            g.Invoke(null, new object[] { propValue, sbReturn, tabIndent});
+                        }
+					    else
+                        { 
+					        GetSubObjectPropertiesString(propValue, sbReturn, tabIndent);
+					    }
 					}
 				}
-				catch (Exception)
+				catch (Exception ex)
 				{
 				}
 			}
+		}
+
+        private static void GetSubObjectPropertiesStringForList<TObjectType>(List<TObjectType> subobjectList, StringBuilder sbReturn, string tabIndent)
+		{
+			if (subobjectList.GetType().Assembly.FullName.StartsWith("System")) return;
+            tabIndent = tabIndent ?? String.Empty;
+            foreach (var singleItem in subobjectList)
+		    {
+		        GetSubObjectPropertiesString(singleItem, sbReturn, tabIndent + "\t..>");
+		    }
 		}
 
 		public static class DocumentStoreHolder

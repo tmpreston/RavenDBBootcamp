@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Raven.Client.Indexes;
 
@@ -12,10 +13,24 @@ namespace RavenDBBootcamp
            from singleRegion in regions
            select new
            {
-               TheName = singleRegion.Name,
-               HowMany = singleRegion.Territories.Count,
-               BestOrFirst = singleRegion.Territories.FirstOrDefault(),
+              singleRegion.Name,
            };
+        }
+
+        public static void Run()
+        {
+            using (var session = Utility.DocumentStoreHolder.Store.OpenSession())
+            {
+                var results = session
+                    .Query<Region, Unit2Lesson2>()
+                    .Where(x => x.Name.StartsWith("S", StringComparison.InvariantCultureIgnoreCase) || x.Name.StartsWith("N"))
+                    .ToList();
+
+                foreach (var res in results)
+                {
+                    Utility.WriteProperties(res);
+                }
+            }
         }
     }
 }
