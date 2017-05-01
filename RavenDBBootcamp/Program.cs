@@ -21,15 +21,18 @@ namespace RavenDBBootcamp
 		    });
 		    Console.Title = "RavenDB Bootcamp";
 			Console.WriteLine("Starting.");
+            var sw = new Stopwatch();
+            sw.Start();
 
             //Unit1Lesson2.Run();
             //Unit1Lesson3.Run();
             //Unit1Lesson4.Run();
             //Unit1Lesson5.Run();
             //Unit1Lesson6.Run();
-            Unit2Lesson1.Run();
+            //Unit2Lesson1.Run();
+		    new Unit2Lesson2().ExecuteAsync(Utility.DocumentStoreHolder.Store);
 
-
+            Console.WriteLine("Total time: {0:0.00}s", sw.ElapsedMilliseconds/1000);
             Console.WriteLine("Enter to continue.");
 			Console.ReadLine();
 		}

@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit1.cs" />
     <Compile Include="Unit2Lesson1.cs" />
+    <Compile Include="Unit2Lesson2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
