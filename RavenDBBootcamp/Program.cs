@@ -15,13 +15,18 @@ namespace RavenDBBootcamp
 	{
 		static void Main(string[] args)
 		{
+		    Task.Run(() =>
+		    {
+		        Utility.DocumentStoreHolder.Store.GetLastWrittenEtag();
+		    });
 		    Console.Title = "RavenDB Bootcamp";
 			Console.WriteLine("Starting.");
 
 			//Unit1Lesson2.Run();
 			//Unit1Lesson3.Run();
 			//Unit1Lesson4.Run();
-			Unit1Lesson5.Run();
+			//Unit1Lesson5.Run();
+            Unit1Lesson6.Run();
 
 			Console.WriteLine("Enter to continue.");
 			Console.ReadLine();
@@ -266,5 +271,43 @@ namespace RavenDBBootcamp
 		}
 	}
 
+    public static class Unit1Lesson6
+    {
+        public static void Run()
+        {
+            // storing a new document
+            string categoryId;
+            using (var session = Utility.DocumentStoreHolder.Store.OpenSession())
+            {
+                var newCategory = new Category
+                {
+                    Name = "My New Category",
+                    Description = "Description of the new category"
+                };
+
+                session.Store(newCategory);
+                categoryId = newCategory.Id;
+                session.SaveChanges();
+            }
+
+            // loading and modifying
+            using (var session = Utility.DocumentStoreHolder.Store.OpenSession())
+            {
+                var storedCategory = session
+                    .Load<Category>(categoryId);
+
+                storedCategory.Name = "abcd";
+
+                session.SaveChanges();
+            }
+
+            // deleting
+            using (var session = Utility.DocumentStoreHolder.Store.OpenSession())
+            {
+                session.Delete(categoryId);
+                session.SaveChanges();
+            }
+        }
+    }
 
 }
