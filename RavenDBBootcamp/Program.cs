@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Indexes;
 using static System.Console;
 
 namespace RavenDBBootcamp
@@ -27,10 +28,12 @@ namespace RavenDBBootcamp
 			//Unit1Lesson5.Run();
 			//Unit1Lesson6.Run();
 			//Unit2Lesson1.Run();
-			new Unit2Lesson2().Execute(Utility.DocumentStoreHolder.Store);
-			Unit2Lesson2.Run();
+			//new Unit2Lesson2().Execute(Utility.DocumentStoreHolder.Store);
+			//Unit2Lesson2.Run();
+			Unit2Lesson3.Run();
 
-			WriteLine("Total time: {0:0.00}s", sw.ElapsedMilliseconds / 1000);
+
+			//WriteLine("Total time: {0:0.00}s", sw.ElapsedMilliseconds / 1000);
 			WriteLine("Enter to continue.");
 			ReadLine();
 		}
@@ -96,12 +99,23 @@ namespace RavenDBBootcamp
 					{
 						ConnectionStringName = "RavenDB"
 					};
+					var sw = new Stopwatch();
+					sw.Start();
+					store.Initialize();
+					Console.WriteLine("Store.Initialize: {0:0.00}ms", sw.ElapsedMilliseconds);
 
-					return store.Initialize();
+					var asm = Assembly.GetExecutingAssembly();
+					sw.Reset();
+					sw.Start();
+					IndexCreation.CreateIndexes(asm, store);
+					Console.WriteLine("IndexCreation.CreateIndexes: {0:0.00}ms", sw.ElapsedMilliseconds);
+
+					return store;
 				});
 
 			public static IDocumentStore Store =>
 				LazyStore.Value;
 		}
+
 	}
 }

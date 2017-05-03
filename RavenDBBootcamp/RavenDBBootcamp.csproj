@@ -55,10 +55,13 @@
     <Compile Include="Unit1.cs" />
     <Compile Include="Unit2Lesson1.cs" />
     <Compile Include="Unit2Lesson2.cs" />
+    <Compile Include="Unit2Lesson3.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
