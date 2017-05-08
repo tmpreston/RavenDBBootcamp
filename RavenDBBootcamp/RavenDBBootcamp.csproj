@@ -55,7 +55,8 @@
     <Compile Include="Unit1.cs" />
     <Compile Include="Unit2Lesson1.cs" />
     <Compile Include="Unit2Lesson2.cs" />
-    <Compile Include="Unit2Lesson3.cs" />
+    <Compile Include="Unit2Lesson3_MultiMapIndex.cs" />
+    <Compile Include="Unit2Lesson4_MapReduce.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />

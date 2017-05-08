@@ -30,7 +30,8 @@ namespace RavenDBBootcamp
 			//Unit2Lesson1.Run();
 			//new Unit2Lesson2().Execute(Utility.DocumentStoreHolder.Store);
 			//Unit2Lesson2.Run();
-			Unit2Lesson3.Run();
+			//Unit2Lesson3_MultiMapIndex.Run();
+			Unit2Lesson4_MapReduce.Run();
 
 
 			//WriteLine("Total time: {0:0.00}s", sw.ElapsedMilliseconds / 1000);

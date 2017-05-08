@@ -7,7 +7,7 @@ using Raven.Client.Indexes;
 
 namespace RavenDBBootcamp
 {
-	public class Unit2Lesson3
+	public class Unit2Lesson3_MultiMapIndex
 	{
 		public static void Run()
 		{
