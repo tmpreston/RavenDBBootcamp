@@ -21,18 +21,27 @@ namespace RavenDBBootcamp
 			WriteLine("Starting.");
 			var sw = new Stopwatch();
 			sw.Start();
-
-			//Unit1Lesson2.Run();
-			//Unit1Lesson3.Run();
-			//Unit1Lesson4.Run();
-			//Unit1Lesson5.Run();
-			//Unit1Lesson6.Run();
-			//Unit2Lesson1.Run();
-			//new Unit2Lesson2().Execute(Utility.DocumentStoreHolder.Store);
-			//Unit2Lesson2.Run();
-			//Unit2Lesson3_MultiMapIndex.Run();
-			Unit2Lesson4_MapReduce.Run();
-
+			try
+			{
+				//Unit1Lesson2.Run();
+				//Unit1Lesson3.Run();
+				//Unit1Lesson4.Run();
+				//Unit1Lesson5.Run();
+				//Unit1Lesson6.Run();
+				//Unit2Lesson1.Run();
+				//new Unit2Lesson2().Execute(Utility.DocumentStoreHolder.Store);
+				//Unit2Lesson2.Run();
+				//Unit2Lesson3_MultiMapIndex.Run();
+				//Unit2Lesson4_MapReduce.Run();
+				//Unit2Lesson5_LoadDocument.Run();
+				Utility.TimeRun(Unit2Lesson4_MapReduce.Run);
+				Utility.TimeRun(Unit2Lesson5_LoadDocument.Run);
+			}
+			catch (Exception e)
+			{
+				WriteLine(e);
+				throw;
+			}
 
 			//WriteLine("Total time: {0:0.00}s", sw.ElapsedMilliseconds / 1000);
 			WriteLine("Enter to continue.");
@@ -116,6 +125,15 @@ namespace RavenDBBootcamp
 
 			public static IDocumentStore Store =>
 				LazyStore.Value;
+		}
+
+		public static void TimeRun(Action toRun)
+		{
+			Console.WriteLine("Starting timed run: {0}", nameof(toRun));
+			var sw = new Stopwatch();
+			sw.Start();
+			toRun();
+			WriteLine("Total time: {0:0.00}s | {1}", sw.ElapsedMilliseconds / 1000, nameof(toRun));
 		}
 
 	}
