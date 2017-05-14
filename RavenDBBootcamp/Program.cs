@@ -36,7 +36,8 @@ namespace RavenDBBootcamp
 				//Unit2Lesson5_LoadDocument.Run();
 				//Utility.TimeRun(Unit2Lesson4_MapReduce.Run);
 				//Utility.TimeRun(Unit2Lesson5_LoadDocument.Run);
-				Unit2Lesson6_Transformers.Run();
+				//Unit2Lesson6_Transformers.Run();
+				Unit2Lesson7_StatsAndStaleIndexes.Run();
 			}
 			catch (Exception e)
 			{
@@ -58,6 +59,19 @@ namespace RavenDBBootcamp
 			ForegroundColor = ConsoleColor.DarkGreen;
 			var sbReturn = new StringBuilder();
 			GetSubObjectPropertiesString(objectToExpand, sbReturn, "\t");
+			WriteLine(sbReturn.ToString());
+			ForegroundColor = prev;
+		}
+
+		public static void WriteContents<Key,Value>(this Dictionary<Key,Value> dictionaryToExpand)
+		{
+			var prev = ForegroundColor;
+			ForegroundColor = ConsoleColor.DarkGreen;
+			var sbReturn = new StringBuilder();
+			foreach (var entry in dictionaryToExpand)
+			{
+				GetSubObjectPropertiesString(entry, sbReturn, "\t");
+			}
 			WriteLine(sbReturn.ToString());
 			ForegroundColor = prev;
 		}
