@@ -34,8 +34,9 @@ namespace RavenDBBootcamp
 				//Unit2Lesson3_MultiMapIndex.Run();
 				//Unit2Lesson4_MapReduce.Run();
 				//Unit2Lesson5_LoadDocument.Run();
-				Utility.TimeRun(Unit2Lesson4_MapReduce.Run);
-				Utility.TimeRun(Unit2Lesson5_LoadDocument.Run);
+				//Utility.TimeRun(Unit2Lesson4_MapReduce.Run);
+				//Utility.TimeRun(Unit2Lesson5_LoadDocument.Run);
+				Unit2Lesson6_Transformers.Run();
 			}
 			catch (Exception e)
 			{
@@ -125,7 +126,7 @@ namespace RavenDBBootcamp
 
 			public static IDocumentStore Store =>
 				LazyStore.Value;
-		}
+	}
 
 		public static void TimeRun(Action toRun)
 		{

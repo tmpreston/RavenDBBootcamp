@@ -58,6 +58,7 @@
     <Compile Include="Unit2Lesson3_MultiMapIndex.cs" />
     <Compile Include="Unit2Lesson4_MapReduce.cs" />
     <Compile Include="Unit2Lesson5_LoadDocument.cs" />
+    <Compile Include="Unit2Lesson6_Transformers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
