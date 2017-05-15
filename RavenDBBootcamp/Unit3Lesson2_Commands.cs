@@ -16,7 +16,7 @@ namespace RavenDBBootcamp
                         'Product': 'products/1',
                         'ProductName': 'Chai',
                         'PricePerUnit': 18,
-                        'Quantity': 1,
+                        'Quantity': 5,
                         'Discount': 0
                         });"
 				});
