@@ -61,6 +61,7 @@
     <Compile Include="Unit2Lesson6_Transformers.cs" />
     <Compile Include="Unit2Lesson7_StatsAndStaleIndexes.cs" />
     <Compile Include="Unit3Lesson1_Metadata.cs" />
+    <Compile Include="Unit3Lesson2_Commands.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
