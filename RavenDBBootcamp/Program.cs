@@ -37,7 +37,8 @@ namespace RavenDBBootcamp
 				//Utility.TimeRun(Unit2Lesson4_MapReduce.Run);
 				//Utility.TimeRun(Unit2Lesson5_LoadDocument.Run);
 				//Unit2Lesson6_Transformers.Run();
-				Unit2Lesson7_StatsAndStaleIndexes.Run();
+				//Unit2Lesson7_StatsAndStaleIndexes.Run();
+			    Unit3Lesson1_Metadata.Run();
 			}
 			catch (Exception e)
 			{
