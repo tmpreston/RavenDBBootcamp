@@ -82,7 +82,7 @@ namespace RavenDBBootcamp
 
 		private static void AddAuditExample()
 		{
-			Utility.DocumentStoreHolder.Store.Listeners.RegisterListener(new PreventDeleteListener());
+			Utility.DocumentStoreHolder.Store.Listeners.RegisterListener(new AuditStoreListener());
 			using (var session = Utility.DocumentStoreHolder.Store.OpenSession())
 			{
 				var anyCategory = session.Load<Category>("categories/99");
