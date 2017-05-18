@@ -75,6 +75,7 @@
     <Compile Include="Unit3Lesson2_Commands.cs" />
     <Compile Include="Unit3Lesson3_BatchCommands.cs" />
     <Compile Include="Unit3Lesson4_ChangesAPI.cs" />
+    <Compile Include="Unit3Lesson5_Listeners.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />

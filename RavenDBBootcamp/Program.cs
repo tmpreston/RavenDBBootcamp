@@ -41,12 +41,12 @@ namespace RavenDBBootcamp
 				//Unit3Lesson1_Metadata.Run();
 				//Unit3Lesson2_Commands.Run();
 				//Unit3Lesson3_BatchCommands.Run();
-				Unit3Lesson4_ChangesAPI.Run();
+				//Unit3Lesson4_ChangesAPI.Run();
+				Unit3Lesson5_Listeners.Run();
 			}
 			catch (Exception e)
 			{
 				WriteLine(e);
-				throw;
 			}
 
 			//WriteLine("Total time: {0:0.00}s", sw.ElapsedMilliseconds / 1000);
